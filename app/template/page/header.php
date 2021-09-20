@@ -7,3 +7,11 @@
     <title>Orca</title>
 </head>
 <body>
+<header>
+    <nav>
+        <ul>
+            <li><a href="<?php echo BASE_URL ?>/post">Post</a></li>
+            <li><a href="<?php echo BASE_URL ?>/comment">Comment</a></li>
+        </ul>
+    </nav>
+</header>

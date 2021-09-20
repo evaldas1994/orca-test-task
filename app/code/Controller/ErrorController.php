@@ -4,10 +4,10 @@ namespace Controller;
 
 use Core\Controller;
 
-class PostController extends Controller
+class ErrorController extends Controller
 {
     public function index()
     {
-        $this->render('main\post\index', []);
+        $this->render('main\error\index', []);
     }
 }

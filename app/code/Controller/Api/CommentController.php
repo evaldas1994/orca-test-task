@@ -3,6 +3,10 @@
 namespace Controller\Api;
 
 use Core\Controller;
+use Core\Request;
+use Model\Comment;
+use Carbon\Carbon;
+use Throwable;
 
 class CommentController extends Controller
 {
@@ -13,17 +17,37 @@ class CommentController extends Controller
         return http_response_code(200);
     }
 
-    public function store($request)
+    public function store()
     {
+        $comment = new Comment();
 
-        header('Content-Type: application/json; charset=utf-8');
+       header('Content-Type: application/json; charset=utf-8');
 
-        $entityBody = file_get_contents('php://input');
-        echo $entityBody;
+        $request = file_get_contents('php://input');
+        $request = json_decode($request);
 
-        // $decod = json_decode($entityBody);
-        // echo $decod->title;
+        $comment->setPostId($request->post_id);
+        $comment->setRootPostId($request->root_post_id);
+        $comment->setEmail($request->email);
+        $comment->setName($request->name);
+        $comment->setContent($request->content);
+        $comment->setCreatedAt(Carbon::now());
+        $comment->setUpdatedAt(Carbon::now());
 
-        return http_response_code(200);
+        try
+        {
+            $comment->create();
+
+            return http_response_code(201);
+        }
+        catch(Throwable $throwable)
+        {
+            echo json_encode(['errors' => $throwable->getMessage()]);
+            return http_response_code(500);
+        }
+
+
+
+
     }
 }

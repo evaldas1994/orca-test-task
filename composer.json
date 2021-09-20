@@ -3,7 +3,8 @@
     "description": "Test task for Orca",
     "type": "project",
     "require": {
-        "psr/log": "^3.0"
+        "psr/log": "^3.0",
+        "nesbot/carbon": "^2.53"
     },
     "autoload": {
         "psr-4": {

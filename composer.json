@@ -1,0 +1,19 @@
+{
+    "name": "evaldas/orca",
+    "description": "Test task for Orca",
+    "type": "project",
+    "require": {
+        "psr/log": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Evaldas\\Orca\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "evaldas1994",
+            "email": "evaldas.tuleikis@gmail.com"
+        }
+    ]
+}

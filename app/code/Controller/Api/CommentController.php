@@ -7,13 +7,19 @@ use Core\Request;
 use Model\Comment;
 use Carbon\Carbon;
 use Throwable;
+use Validation\CommentValidation;
 
 class CommentController extends Controller
 {
     public function index()
     {
+        $comment = new Comment();
+        $comments = $comment->all();
+
         header('Content-Type: application/json; charset=utf-8');
-        echo json_encode(['success' => 'got comment successfully']);
+
+        echo json_encode(['data' => $comments]);
+
         return http_response_code(200);
     }
 
@@ -26,28 +32,33 @@ class CommentController extends Controller
         $request = file_get_contents('php://input');
         $request = json_decode($request);
 
-        $comment->setPostId($request->post_id);
-        $comment->setRootPostId($request->root_post_id);
-        $comment->setEmail($request->email);
-        $comment->setName($request->name);
-        $comment->setContent($request->content);
-        $comment->setCreatedAt(Carbon::now());
-        $comment->setUpdatedAt(Carbon::now());
+        $commentValidation = new CommentValidation($request);
+        $errors = $commentValidation->validateForm();
 
-        try
-        {
-            $comment->create();
+        if (!empty($errors)) {
+            header('Content-Type: application/json; charset=utf-8');
+            echo json_encode(['errors' => $errors]);
+            return http_response_code(422);
+        } else {
+            $comment->setPostId($request->post_id);
+            $comment->setRootCommentId($request->root_comment_id);
+            $comment->setEmail($request->email);
+            $comment->setName($request->name);
+            $comment->setContent($request->content);
+            $comment->setCreatedAt(Carbon::now());
+            $comment->setUpdatedAt(Carbon::now());
 
-            return http_response_code(201);
+            try
+            {
+                $comment->create();
+
+                return http_response_code(201);
+            }
+            catch(Throwable $throwable)
+            {
+                echo json_encode(['errors' => $throwable->getMessage()]);
+                return http_response_code(500);
+            }
         }
-        catch(Throwable $throwable)
-        {
-            echo json_encode(['errors' => $throwable->getMessage()]);
-            return http_response_code(500);
-        }
-
-
-
-
     }
 }

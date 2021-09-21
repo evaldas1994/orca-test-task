@@ -8,7 +8,7 @@ class Comment
 {
     private $id = null;
     private $post_id;
-    private $root_post_id;
+    private $root_comment_id;
     private $email;
     private $name;
     private $content;
@@ -30,14 +30,14 @@ class Comment
         return $this->post_id;
     }
 
-    public function setRootPostId($rootPostId)
+    public function setRootCommentId($rootCommentId)
     {
-        $this->root_post_id = $rootPostId;
+        $this->root_comment_id = $rootCommentId;
     }
 
-    public function getRootPostId()
+    public function getRootCommentId()
     {
-        return $this->root_post_id;
+        return $this->root_comment_id;
     }
 
     public function setEmail($email)
@@ -96,7 +96,7 @@ class Comment
 
         $comment = [
             'post_id' => $this->post_id,
-            'root_post_id' => $this->root_post_id,
+            'root_comment_id' => $this->root_comment_id,
             'email' => $this->email,
             'name' => $this->name,
             'content' => $this->content,
@@ -105,5 +105,17 @@ class Comment
         ];
 
         $db->insert('comments')->values($comment)->exec();
+    }
+
+    public function find($id)
+    {
+        $db = new Db();
+        return $db->select()->from('comments')->where('id', $id)->getOne();
+    }
+
+    public function all()
+    {
+        $db = new Db();
+        return $db->select()->from('comments')->get();
     }
 }

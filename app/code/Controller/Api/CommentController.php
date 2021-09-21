@@ -61,4 +61,16 @@ class CommentController extends Controller
             }
         }
     }
+
+    public function getCommentsByPostId($id)
+    {
+        $comment = new Comment();
+        $comments = $comment->allByPostId($id);
+
+        header('Content-Type: application/json; charset=utf-8');
+
+        echo json_encode(['data' => $comments]);
+
+        return http_response_code(200);
+    }
 }

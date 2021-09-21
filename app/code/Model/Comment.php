@@ -118,4 +118,10 @@ class Comment
         $db = new Db();
         return $db->select()->from('comments')->get();
     }
+
+    public function allByPostId($id)
+    {
+        $db = new Db();
+        return $db->select()->from('comments')->where('post_id', $id)->get();
+    }
 }

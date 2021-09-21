@@ -1,0 +1,133 @@
+body {
+    width: 100vw;
+    min-height: 100vh;
+    position: relative;
+}
+
+header {
+    width: 100%;
+    height: 50px;
+    background-color: rgb(105, 192, 105);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-bottom: 1px solid black;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    font-size: 1.2em;
+    padding: 0.4em 1em;
+}
+
+a:hover {
+    color: rgb(2, 29, 18);
+    background: rgb(152, 190, 152);
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 30px;
+    background-color: rgb(105, 192, 105);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-top: 1px solid black;
+}
+
+/* FORM */
+
+.form-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.label {
+    width: 100px;
+    text-align: center;
+}
+
+.input {
+    width: 200px;
+}
+
+input {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid rgb(202, 202, 202);
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.textarea {
+    width: 500px;
+}
+
+textarea {
+    width: 100%;
+    min-height: 50px;
+    box-sizing: border-box;
+    vertical-align: top;
+    border: 1px solid rgb(202, 202, 202);
+    border-radius: 5px;
+}
+
+.row {
+    display: flex;
+    margin-top: 10px;
+}
+
+.field {
+    display: flex;
+}
+
+/* COMMENTS */
+.comment-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.all-comments {
+    width: 600px;
+}
+
+.root-comment {
+    background-color: rgb(202, 202, 202);
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+p {
+    margin: 0;
+}
+
+.data {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0 5px 0;
+}
+
+.data-left {
+    display: flex;
+}
+
+.data-name {
+    font-weight: bold;
+    padding-right: 10px;
+}
+
+.answers {
+    width: 90%;
+    margin-left: auto;
+    font-size: 0.8em;
+}

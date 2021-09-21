@@ -2,6 +2,7 @@ body {
     width: 100vw;
     min-height: 100vh;
     position: relative;
+    font-family: 'Nunito', sans-serif;
 }
 
 header {
@@ -50,13 +51,17 @@ footer {
     justify-content: center;
 }
 
+form {
+    padding-bottom: 10px;
+}
+
 .label {
-    width: 100px;
+    min-width: 100px;
     text-align: center;
 }
 
 .input {
-    width: 200px;
+    width: 100%;
 }
 
 input {
@@ -68,7 +73,7 @@ input {
 }
 
 .textarea {
-    width: 500px;
+    width: 100%;
 }
 
 textarea {
@@ -81,11 +86,18 @@ textarea {
 }
 
 .row {
+    width: 100%;
     display: flex;
     margin-top: 10px;
 }
 
 .field {
+    width: 100%;
+    display: flex;
+}
+
+.field-50 {
+    width: 50%;
     display: flex;
 }
 

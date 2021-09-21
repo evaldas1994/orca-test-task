@@ -1,7 +1,7 @@
 <div class="form-wrapper">
     <form class="form" name="comment-form">
         <div class="row">
-            <div class="field">
+            <div class="field-50">
                 <div class="label">
                     <label for="email">Email*</label>
                 </div>
@@ -11,7 +11,7 @@
                 </div>
             </div>
 
-            <div class="field">
+            <div class="field-50">
                 <div class="label">
                     <label for="name">Name*</label>
                 </div>

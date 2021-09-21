@@ -113,15 +113,21 @@ class Comment
         return $db->select()->from('comments')->where('id', $id)->getOne();
     }
 
-    public function all()
+    public function allRoot()
     {
         $db = new Db();
-        return $db->select()->from('comments')->get();
+        return $db->select()->from('comments')->where('root_comment_id', null)->orderBy('id', 'desc')->get();
     }
 
     public function allByPostId($id)
     {
         $db = new Db();
-        return $db->select()->from('comments')->where('post_id', $id)->get();
+        return $db->select()->from('comments')->where('post_id', $id)->orderBy('id', 'desc')->get();
+    }
+
+    public function getAnswersByCommentId($id)
+    {
+        $db = new Db();
+        return $db->select()->from('comments')->where('root_comment_id', $id)->orderBy('id', 'desc')->get();
     }
 }

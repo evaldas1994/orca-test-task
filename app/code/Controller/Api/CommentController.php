@@ -14,7 +14,7 @@ class CommentController extends Controller
     public function index()
     {
         $comment = new Comment();
-        $comments = $comment->all();
+        $comments = $comment->allRoot();
 
         header('Content-Type: application/json; charset=utf-8');
 
@@ -52,6 +52,8 @@ class CommentController extends Controller
             {
                 $comment->create();
 
+                header('Content-Type: application/json; charset=utf-8');
+                echo json_encode(['success' => 'Comment created successfully.']);
                 return http_response_code(201);
             }
             catch(Throwable $throwable)
@@ -66,6 +68,18 @@ class CommentController extends Controller
     {
         $comment = new Comment();
         $comments = $comment->allByPostId($id);
+
+        header('Content-Type: application/json; charset=utf-8');
+
+        echo json_encode(['data' => $comments]);
+
+        return http_response_code(200);
+    }
+
+    public function getAnswersByCommentId($id)
+    {
+        $comment = new Comment();
+        $comments = $comment->getAnswersByCommentId($id);
 
         header('Content-Type: application/json; charset=utf-8');
 

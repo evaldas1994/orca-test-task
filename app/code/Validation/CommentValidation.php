@@ -87,11 +87,6 @@ class CommentValidation
                     return;
                 }
             }
-
-             if(!preg_match('/^[0-9]$/', $rootCommentId)) {
-                $this->addError('root_comment_id','Root comment id must be numeric or null');
-                return;
-            }
         }
     }
 
@@ -115,7 +110,7 @@ class CommentValidation
         if(empty($name)) {
             $this->addError('name', 'Name is required');
         } else {
-            if(!preg_match('/^[a-zA-Z]{2,100}$/', $name)) {
+            if(!preg_match('/^[a-zA-Z\s]{2,100}$/', $name)) {
                 $this->addError('name','Name must be 2-100 chars without numbers');
             }
         }

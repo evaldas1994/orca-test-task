@@ -68,6 +68,12 @@ class Db
         return isset($rez[0]) ? $rez[0] : null;
     }
 
+    public function orderBy($table = 'id', $keyword = 'asc')
+    {
+         $this->sql .= 'ORDER BY ' . $table . ' '. $keyword . ' ';
+        return $this;
+    }
+
 
     public function select($fields = '*')
     {

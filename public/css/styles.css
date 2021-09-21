@@ -143,3 +143,16 @@ p {
     margin-left: auto;
     font-size: 0.8em;
 }
+
+/* NOTIFICATIONS */
+.errors {
+    color: red;
+}
+
+.success {
+    color: green;
+}
+
+.hidden {
+    display: none;
+}
